@@ -3,12 +3,12 @@ import tempfile
 
 from django import forms
 from django.conf import settings
+from django.core.cache import cache
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import Client, TestCase, override_settings
 from django.urls import reverse
-from django.core.cache import cache
 
-from ..models import Group, Post, User, Comment, Follow
+from ..models import Comment, Follow, Group, Post, User
 
 MAIN = reverse('posts:index')
 CREATE = reverse('posts:post_create')

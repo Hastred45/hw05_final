@@ -7,7 +7,7 @@ from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 
 from ..forms import PostForm
-from ..models import Group, Post, User, Comment
+from ..models import Comment, Group, Post, User
 
 CREATE = reverse('posts:post_create')
 
