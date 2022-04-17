@@ -64,9 +64,9 @@ def profile(request, username):
     following = False
     if request.user.is_authenticated:
         follow_obj = Follow.objects.filter(user=request.user,
-                                          author=author)
+                                           author=author)
         if follow_obj:
-            following = True            
+            following = True
     context = {
         'page_obj': page_obj,
         'author': author,

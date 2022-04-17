@@ -6,7 +6,7 @@
 {% block content %}
   <h1>{{ title }}</h1>
   {% include 'includes/switcher.html' %}
-  {% cache 20 index_page %} 
+  {% cache 20 index_page %}  
   {% for post in page_obj %}
     {% include 'includes/post_list.html' %}    
     {% if post.group %}        
