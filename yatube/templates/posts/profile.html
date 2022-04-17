@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block title %}
+  Профайл пользователя - {{ author.get_full_name }} 
+{% endblock %}
+{% block content %}
+<div class="mb-5">             
+  <h1>Все заметки автора {{ author.get_full_name }} </h1>
+  <h3>Всего заметок: {{ author.posts.count }}</h3>
+  {% if following %}
+    {% if request.user != author %}
+    {% include 'includes/subscribe.html' %}  
+    {% elif request.user == author %}
+    <h4>Это ваша станица</h4>
+    {% endif %}
+  {% endif %}
+</div>
+  {% for post in page_obj %}   
+  <article>
+    {% include 'includes/post_list.html' %}           
+  </article>       
+  {% if post.group %}    
+    <a href="{% url 'posts:group_list' post.group.slug %}">все заметки группы</a>
+  {% endif %}
+  <br>
+  <a href="{% url 'posts:post_detail' post.pk %}">подробнее</a>
+  {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %}
+  {% include 'includes/paginator.html' %}    
+{% endblock %}

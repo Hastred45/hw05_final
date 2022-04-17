@@ -1,0 +1,289 @@
+{% extends "base.html" %}
+{% block title %}Технологии{% endblock %}
+{% block content %}
+<div class="row">
+  <h1>Вот что я умею</h1>
+  <aside class="col-12 col-md-3">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Python
+      </li>
+      <li class="list-group-item">
+        Django
+      </li>
+    </ul>
+  </aside>  
+  <article class="col-12 col-md-9">
+    <div xmlns="http://www.w3.org/1999/xhtml"><img src="https://habrastorage.org/r/w1560/getpro/habr/olpictures/52b/ef1/976/52bef19768f0eb502fd1600cf180965d.png" width="300" height="97" alt="Python Logo" hspace="10" vspace="10" align="left" data-src="https://habrastorage.org/getpro/habr/olpictures/52b/ef1/976/52bef19768f0eb502fd1600cf180965d.png"><br>
+        <br>
+        На сайте <a href="http://www.poromenos.org">Poromenos' Stuff</a> была <br>
+        опубликована <a href="http://www.poromenos.org/tutorials/python?page=1">статья</a>, в которой, в сжатой форме, <br>
+        рассказывают об основах языка Python. Я предлагаю вам перевод этой статьи. Перевод не дословный. Я постарался подробнее объяснить некоторые моменты, которые могут быть непонятны. <br>
+        <p>Если вы собрались изучать язык Python, но не можете найти подходящего руководства, то эта <br>
+        статья вам очень пригодится! За короткое время, вы сможете познакомиться с <br>
+        основами языка Python. Хотя эта статья часто опирается <br>
+        на то, что вы уже имеете опыт программирования, но, я надеюсь, даже новичкам <br>
+        этот материал будет полезен. Внимательно прочитайте каждый параграф. В связи с <br>
+        сжатостью материала, некоторые темы рассмотрены поверхностно, но содержат весь <br>
+        необходимый метриал.</p><br>
+        <a name="habracut"></a><br>
+        <h2>Основные свойства </h2><br>
+        <br>
+        <p>Python не требует явного объявления переменных, является регистро-зависим (переменная var не эквивалентна переменной Var или VAR — это три разные переменные) <a href="http://ru.wikipedia.org/wiki/Объектно-ориентированное_программирование">объектно-ориентированным</a> языком.</p><br>
+        <br>
+        <h2>Синтаксис</h2><br>
+        <br>
+        <p>Во первых стоит отметить интересную особенность Python. Он не содержит операторных скобок (begin..end в pascal или {..}в Си), вместо этого <strong>блоки выделяются отступами</strong>: пробелами или табуляцией, а вход в блок из операторов осуществляется двоеточием. Однострочные комментарии начинаются со знака фунта «#», многострочные — начинаются и заканчиваются тремя двойными кавычками «"""». <br>
+        Чтобы присвоить значение пременной используется знак «=», а для сравнения — <br>
+        «==». Для увеличения значения переменной, или добавления к строке используется оператор «+=», а для уменьшения — «-=». Все эти операции могут взаимодействовать с большинством типов, в том числе со строками. Например</p><br>
+        <blockquote>&gt;&gt;&gt; myvar = <font color="#ff4500">3</font><br>
+        &gt;&gt;&gt; myvar += <font color="#ff4500">2</font><br>
+        &gt;&gt;&gt; myvar -= <font color="#ff4500">1</font><br>
+        <font color="#808080">""«Это многострочный комментарий <br>
+        Строки заключенные в три двойные кавычки игнорируются»""</font><br>
+        &gt;&gt;&gt; mystring = <font color="#483d8b">«Hello»</font><br>
+        &gt;&gt;&gt; mystring += <font color="#483d8b">" world."</font><br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> mystring<br>
+        Hello world.<br>
+        <font color="#808080"># Следующая строка меняет <br>
+         значения переменных местами. (Всего одна строка!)</font><br>
+        &gt;&gt;&gt; myvar, mystring = mystring, myvar</blockquote><br>
+        <h2>Структуры данных</h2><p>Python содержит такие структуры данных как<strong> списки (lists), кортежи (tuples) и словари (dictionaries</strong>). Списки — похожи на одномерные массивы (но вы можете использовать Список включающий списки — многомерный массив), кортежи — неизменяемые списки, словари — тоже списки, но индексы могут быть любого типа, а не только числовыми. "Массивы" в Python могут содержать данные любого типа, то есть в одном массиве может могут находиться числовые, строковые и другие типы данных. Массивы начинаются с индекса 0, а последний элемент можно получить по индексу -1 Вы можете присваивать переменным функции и использовать их соответственно.</p><br>
+        <blockquote>&gt;&gt;&gt; sample = [<font color="#ff4500">1</font>, [<font color="#483d8b">«another»</font>, <font color="#483d8b">«list»</font>], (<font color="#483d8b">«a»</font>, <font color="#483d8b">«tuple»</font>)] <font color="#808080">#Список состоит из целого числа, другого списка и кортежа</font><br>
+        &gt;&gt;&gt; mylist = [<font color="#483d8b">«List item 1»</font>, <font color="#ff4500">2</font>, <font color="#ff4500">3</font>.<font color="#ff4500">14</font>] <font color="#808080">#Этот список содержит строку, целое и дробное число</font><br>
+        &gt;&gt;&gt; mylist[<font color="#ff4500">0</font>] = <font color="#483d8b">«List item 1 again»</font> <font color="#808080">#Изменяем первый (нулевой) элемент листа mylist</font><br>
+        &gt;&gt;&gt; mylist[-<font color="#ff4500">1</font>] = <font color="#ff4500">3</font>.<font color="#ff4500">14</font> <font color="#808080">#Изменяем последний элемент листа</font><br>
+        &gt;&gt;&gt; mydict = {<font color="#483d8b">«Key 1»</font>: <font color="#483d8b">«Value 1»</font>, <font color="#ff4500">2</font>: <font color="#ff4500">3</font>, <font color="#483d8b">«pi»</font>: <font color="#ff4500">3</font>.<font color="#ff4500">14</font>} <font color="#808080">#Создаем словарь, с числовыми и целочисленным индексами</font><br>
+        &gt;&gt;&gt; mydict[<font color="#483d8b">«pi»</font>] = <font color="#ff4500">3</font>.<font color="#ff4500">15</font> <font color="#808080">#Изменяем элемент словаря под индексом «pi».</font><br>
+        &gt;&gt;&gt; mytuple = (<font color="#ff4500">1</font>, <font color="#ff4500">2</font>, <font color="#ff4500">3</font>) <font color="#808080">#Задаем кортеж</font><br>
+        &gt;&gt;&gt; myfunction = <font color="#008000">len</font> <font color="#808080">#Python позволяет таким образом объявлять синонимы функции</font><br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> myfunction(<font color="#008000">list</font>) <br>
+        <font color="#ff4500">3</font></blockquote><br>
+        <p>Вы можете использовать часть массива, задавая первый и последний индекс через двоеточие «:». В таком случае вы получите часть массива, от первого индекса до второго не включительно. Если не указан первый элемент, то отсчет начинается с начала массива, а если не указан последний — то масив считывается до последнего элемента. Отрицательные значения определяют положение элемента с конца. Например:</p><br>
+        <blockquote>&gt;&gt;&gt; mylist = [<font color="#483d8b">«List item 1»</font>, <font color="#ff4500">2</font>, <font color="#ff4500">3</font>.<font color="#ff4500">14</font>]<br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> mylist[:] <font color="#808080">#Считываются все элементы массива</font><br>
+        [<font color="#483d8b">'List item 1'</font>, <font color="#ff4500">2</font>, <font color="#ff4500">3</font>.<font color="#ff4500">1400000000000001</font>]<br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> mylist[<font color="#ff4500">0</font>:<font color="#ff4500">2</font>] <font color="#808080">#Считываются нулевой и первый элемент массива.</font><br>
+        [<font color="#483d8b">'List item 1'</font>, <font color="#ff4500">2</font>]<br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> mylist[-<font color="#ff4500">3</font>:-<font color="#ff4500">1</font>] <font color="#808080">#Считываются элементы от нулевого (-3) до второго (-1) (не включительно)</font><br>
+        [<font color="#483d8b">'List item 1'</font>, <font color="#ff4500">2</font>]<br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> mylist[<font color="#ff4500">1</font>:] <font color="#808080">#Считываются элементы от первого, до последнего</font><br>
+        [<font color="#ff4500">2</font>, <font color="#ff4500">3</font>.<font color="#ff4500">14</font>]</blockquote><br>
+        <h2>Строки</h2><p>Строки в Python <strong>обособляются кавычками двойными «"» или одинарными «'»</strong>. Внутри двойных ковычек могут присутствовать одинарные или наоборот. К примеру строка «Он сказал 'привет'!» будет выведена на экран как «Он сказал 'привет'!». Если нужно использовать строку из несколько строчек, то эту строку надо начинать и заканчивать тремя двойными кавычками «"""». Вы можете подставить в шаблон строки элементы из кортежа или словаря. Знак процента «%» между строкой и кортежем, заменяет в строке символы «%s» на элемент кортежа. Словари позволяют вставлять в строку элемент под заданным индексом. Для этого надо использовать в строке конструкцию «%(индекс)s». В этом случае вместо «%(индекс)s» будет подставлено значение словаря под заданным индексом.</p><br>
+        <blockquote>&gt;&gt;&gt;<b>print</b> <font color="#483d8b">«Name: %s\nNumber: %s\nString: %s»</font> % (my<b>class</b>.name, <font color="#ff4500">3</font>, <font color="#ff4500">3</font> * <font color="#483d8b">"-"</font>)<br>
+        Name: Poromenos<br>
+        Number: <font color="#ff4500">3</font><br>
+        String: — &nbsp;<br>
+        strString = <font color="#483d8b">""«Этот текст расположен<br>
+        на нескольких строках»""</font><br>
+        &nbsp;<br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> <font color="#483d8b">«This %(verb)s a %(noun)s.»</font> % {<font color="#483d8b">«noun»</font>: <font color="#483d8b">«test»</font>, <font color="#483d8b">«verb»</font>: <font color="#483d8b">«is»</font>}<br>
+        This is a test.</blockquote><br>
+        <h2>Операторы</h2><p>Операторы while, <b>if</b>, <b>for</b> составляют операторы перемещения. Здесь нет аналога оператора select, так что придется обходиться <b>if</b>. В операторе <b>for</b> происходит сравнение <strong>переменной и списка</strong>. Чтобы получить список цифр до числа &lt;number&gt; — используйте функцию range(&lt;number&gt;). Вот пример использования операторов </p><br>
+        <blockquote>rangelist = <font color="#008000">range</font>(<font color="#ff4500">10</font>) <font color="#808080">#Получаем список из десяти цифр (от 0 до 9)</font><br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> rangelist<br>
+        [<font color="#ff4500">0</font>, <font color="#ff4500">1</font>, <font color="#ff4500">2</font>, <font color="#ff4500">3</font>, <font color="#ff4500">4</font>, <font color="#ff4500">5</font>, <font color="#ff4500">6</font>, <font color="#ff4500">7</font>, <font color="#ff4500">8</font>, <font color="#ff4500">9</font>]<br>
+        <font color="#ff7700"><b>for</b></font> number <font color="#ff7700">in</font> rangelist: <font color="#808080">#Пока переменная number (которая каждый раз увеличивается на единицу) входит в список… </font><br>
+         <font color="#808080"># Проверяем входит ли переменная</font><br>
+         <font color="#808080"># numbers в кортеж чисел </font>(<font color="#ff4500">3</font>, <font color="#ff4500">4</font>, <font color="#ff4500">7</font>, <font color="#ff4500">9</font>)<br>
+         <font color="#ff7700"><b>if</b></font> number <font color="#ff7700">in</font> (<font color="#ff4500">3</font>, <font color="#ff4500">4</font>, <font color="#ff4500">7</font>, <font color="#ff4500">9</font>): <font color="#808080">#Если переменная number входит в кортеж (3, 4, 7, 9)...</font><br>
+         <font color="#808080"># Операция «<b>break</b>» обеспечивает</font><br>
+         <font color="#808080"># выход из цикла в любой момент</font><br>
+         <font color="#ff7700"><b>break</b></font> <br>
+         <font color="#ff7700"><b>else</b></font>:<br>
+         <font color="#808080"># «<b>continue</b>» осуществляет «прокрутку»</font><br>
+         <font color="#808080"># цикла. Здесь это не требуется, так как после этой операции </font><br>
+         <font color="#808080"># в любом случае программа переходит опять к обработке цикла</font><br>
+         <font color="#ff7700"><b>continue</b></font><br>
+        <font color="#ff7700"><b>else</b></font>:<br>
+         <font color="#808080"># «<b>else</b>» указывать необязательно. Условие выполняется</font><br>
+         <font color="#808080"># если цикл не был прерван при помощи «<b>break</b>».</font><br>
+         <font color="#ff7700"><b>pass</b></font> <font color="#808080"># Ничего не делать</font><br>
+        &nbsp;<br>
+        <font color="#ff7700"><b>if</b></font> rangelist[<font color="#ff4500">1</font>] == <font color="#ff4500">2</font>:<br>
+         <font color="#ff7700"><b>print</b></font> <font color="#483d8b">«The second item (lists are 0-based) is 2»</font><br>
+        <font color="#ff7700"><strong>elif</strong></font> rangelist[<font color="#ff4500">1</font>] == <font color="#ff4500">3</font>:<br>
+         <font color="#ff7700"><b>print</b></font> <font color="#483d8b">«The second item (lists are 0-based) is 3»</font><br>
+        <font color="#ff7700"><b>else</b></font>:<br>
+         <font color="#ff7700"><b>print</b></font> <font color="#483d8b">«Dunno»</font><br>
+        &nbsp;<br>
+        <font color="#ff7700"><strong>while</strong></font> rangelist[<font color="#ff4500">1</font>] == <font color="#ff4500">1</font>:<br>
+         <font color="#ff7700"><b>pass</b></font></blockquote><br>
+        <h2>Функции</h2><p>Для объявления функции служит <strong>ключевое слово «<b>def</b>»</strong>. Аргументы функции задаются в скобках после названия функции. Можно задавать необязательные аргументы, присваивая им значение по умолчанию. Функции могут возвращать кортежи, в таком случае надо писать возвращаемые значения через запятую. Ключевое слово «<b>lambda</b>» служит для объявления элементарных функций .</p><br>
+        <blockquote><font color="#808080"># arg2 и arg3 — необязательые аргументы, принимают значение объявленное по умолчни,</font><br>
+        <font color="#808080"># если не задать им другое значение при вызове функци.</font><br>
+        <font color="#ff7700"><b>def</b></font> myfunction(arg1, arg2 = <font color="#ff4500">100</font>, arg3 = <font color="#483d8b">«test»</font>):<br>
+         <font color="#ff7700"><b>return</b></font> arg3, arg2, arg1<br>
+        <font color="#808080">#Функция вызывается со значением первого аргумента — "Argument 1", второго — по умолчанию, и третьего — "Named argument"</font>.<br>
+        &gt;&gt;&gt;ret1, ret2, ret3 = myfunction(<font color="#483d8b">«Argument 1»</font>, arg3 = <font color="#483d8b">«Named argument»</font>)<br>
+        <font color="#808080"># ret1, ret2 и ret3 принимают значения "Named argument", 100, "Argument 1" соответственно</font><br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> ret1, ret2, ret3<br>
+        Named argument <font color="#ff4500">100</font> Argument <font color="#ff4500">1</font><br>
+        &nbsp;<br>
+        <font color="#808080"># Следующая запись эквивалентна <b>def</b> f(x): <b>return</b> x + 1</font><br>
+        functionvar = <font color="#ff7700"><b>lambda</b></font> x: x + <font color="#ff4500">1</font><br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> functionvar(<font color="#ff4500">1</font>)<br>
+        <font color="#ff4500">2</font></blockquote><br>
+        <h2>Классы</h2><p>Язык Python ограничен в множественном наследовании в классах. Внутренние переменные и внутренние методы классов начинаются с двух знаков нижнего подчеркивания «__» (например «__myprivatevar»). Мы можем также присвоить значение переменной класса извне. Пример:</p><br>
+        <blockquote><font color="#ff7700"><b>class</b></font> My<b>class</b>:<br>
+         common = <font color="#ff4500">10</font><br>
+         <font color="#ff7700"><b>def</b></font> __init__(<font color="#008000">self</font>):<br>
+         <font color="#008000">self</font>.myvariable = <font color="#ff4500">3</font><br>
+         <font color="#ff7700"><b>def</b></font> myfunction(<font color="#008000">self</font>, arg1, arg2):<br>
+         <font color="#ff7700"><b>return</b></font> <font color="#008000">self</font>.myvariable<br>
+        &nbsp;<br>
+         <font color="#808080"># Здесь мы объявили класс My<b>class</b>. Функция __init__ вызывается автоматически при инициализации классов.</font><br>
+        &gt;&gt;&gt; classinstance = My<b>class</b>() <font color="#808080"># Мы инициализировали класс и переменная myvariable приобрела значение 3 как заявлено в методе инициализации</font><br>
+        &gt;&gt;&gt; classinstance.myfunction(<font color="#ff4500">1</font>, <font color="#ff4500">2</font>) <font color="#808080">#Метод myfunction класса My<b>class</b> возвращает значение переменной myvariable</font><br>
+        <font color="#ff4500">3</font><br>
+        <font color="#808080"># Переменная common объявлена во всех классах</font><br>
+        &gt;&gt;&gt; classinstance2 = My<b>class</b>()<br>
+        &gt;&gt;&gt; classinstance.common<br>
+        <font color="#ff4500">10</font><br>
+        &gt;&gt;&gt; classinstance2.common<br>
+        <font color="#ff4500">10</font><br>
+        <font color="#808080"># Поэтому, если мы изменим ее значение в классе My<b>class</b></font> <font color="#808080">изменятся</font><br>
+        <font color="#808080"># и ее значения в объектах, инициализированных классом My<b>class</b> </font><br>
+        &gt;&gt;&gt; Myclass.common = <font color="#ff4500">30</font><br>
+        &gt;&gt;&gt; classinstance.common<br>
+        <font color="#ff4500">30</font><br>
+        &gt;&gt;&gt; classinstance2.common<br>
+        <font color="#ff4500">30</font><br>
+        <font color="#808080"># А здесь мы не изменяем переменную класса. Вместо этого</font><br>
+        <font color="#808080"># мы объявляем оную в объекте и присваиваем ей новое значение </font><br>
+        &gt;&gt;&gt; classinstance.common = <font color="#ff4500">10</font><br>
+        &gt;&gt;&gt; classinstance.common<br>
+        <font color="#ff4500">10</font><br>
+        &gt;&gt;&gt; classinstance2.common<br>
+        <font color="#ff4500">30</font><br>
+        &gt;&gt;&gt; Myclass.common = <font color="#ff4500">50</font><br>
+        <font color="#808080"># Теперь изменение переменной класса не коснется </font><br>
+        <font color="#808080"># переменных объектов этого класса</font><br>
+        &gt;&gt;&gt; classinstance.common<br>
+        <font color="#ff4500">10</font><br>
+        &gt;&gt;&gt; classinstance2.common<br>
+        <font color="#ff4500">50</font><br>
+        &nbsp;<br>
+        <font color="#808080"># Следующий класс является наследником класса My<b>class</b></font><br>
+        <font color="#808080"># наследуя его свойства и методы, ктому же класс может </font><br>
+        <font color="#808080"># наследоваться из нескольких классов, в этом случае запись </font><br>
+        <font color="#808080"># такая: <b>class</b> Otherclass(Myclass1, Myclass2, MyclassN)</font><br>
+        <font color="#ff7700"><b>class</b></font> Otherclass(Myclass):<br>
+         <font color="#ff7700"><b>def</b></font> __init__(<font color="#008000">self</font>, arg1):<br>
+         <font color="#008000">self</font>.myvariable = <font color="#ff4500">3</font><br>
+         <font color="#ff7700"><b>print</b></font> arg1<br>
+        &nbsp;<br>
+        &gt;&gt;&gt; classinstance = Otherclass(<font color="#483d8b">«hello»</font>)<br>
+        hello<br>
+        &gt;&gt;&gt; classinstance.myfunction(<font color="#ff4500">1</font>, <font color="#ff4500">2</font>)<br>
+        <font color="#ff4500">3</font><br>
+        <font color="#808080"># Этот класс не имеет совйтсва test, но мы можем </font><br>
+        <font color="#808080"># объявить такую переменную для объекта. Причем</font><br>
+        # tэта переменная будет членом только <b>class</b>instance.<br>
+        &gt;&gt;&gt; classinstance.test = <font color="#ff4500">10</font><br>
+        &gt;&gt;&gt; classinstance.test<br>
+        <font color="#ff4500">10</font></blockquote><br>
+        <h2>Исключения</h2><p>Исключения в Python имеют структуру <b>try</b>-<b>except</b> [<b>except</b>ionname]:</p><br>
+        <blockquote><font color="#ff7700"><b>def</b></font> somefunction():<br>
+         <font color="#ff7700"><b>try</b></font>:<br>
+         <font color="#808080"># Деление на ноль вызывает ошибку</font><br>
+         <font color="#ff4500">10</font> / <font color="#ff4500">0</font><br>
+         <font color="#ff7700"><b>except</b></font> <font color="#008000">ZeroDivisionError</font>:<br>
+         <font color="#808080"># Но программа не "Выполняет недопустимую операцию"</font><br>
+         <font color="#808080"># А обрабатывает блок исключения соответствующий ошибке «ZeroDivisionError»</font><br>
+         <font color="#ff7700"><b>print</b></font> <font color="#483d8b">«Oops, invalid.»</font><br>
+        &nbsp;<br>
+        &gt;&gt;&gt; fn<b>except</b>()<br>
+        Oops, invalid.</blockquote><br>
+        <h2>Импорт</h2><p>Внешние библиотеки можно подключить процедурой «<b>import</b> [libname]», где [libname] — название подключаемой библиотеки. Вы так же можете использовать команду «<b>from</b> [libname] <b>import</b> [funcname]», чтобы вы могли использовать функцию [funcname] из библиотеки [libname]</p><br>
+        <blockquote><font color="#ff7700"><b>import</b></font> <font color="#dc143c;">random</font> <font color="#808080">#Импортируем библиотеку «random»</font><br>
+        <font color="#ff7700"><b>from</b></font> <font color="#dc143c;">time</font> <font color="#ff7700"><b>import</b></font> clock <font color="#808080">#И заодно функцию «clock» из библиотеки «time»</font><br>
+        &nbsp;<br>
+        randomint = <font color="#dc143c;">random</font>.randint(<font color="#ff4500">1</font>, <font color="#ff4500">100</font>)<br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> randomint<br>
+        <font color="#ff4500">64</font></blockquote><br>
+        <h2>Работа с файловой системой </h2><br>
+        <br>
+        <p>Python имеет много встроенных библиотек. В этом примере мы попробуем сохранить в бинарном файле структуру списка, прочитать ее и сохраним строку в текстовом файле. Для преобразования структуры данных мы будем использовать стандартную библиотеку «pickle»</p><br>
+        <blockquote><font color="#ff7700"><b>import</b></font> <font color="#dc143c;">pickle</font><br>
+        mylist = [<font color="#483d8b">«This»</font>, <font color="#483d8b">«is»</font>, <font color="#ff4500">4</font>, <font color="#ff4500">13327</font>]<br>
+        <font color="#808080"># Откроем файл C:\binary.dat для записи. Символ «r» </font><br>
+        <font color="#808080"># предотвращает замену специальных сиволов (таких как \n, \t, \b и др.).</font><br>
+        myfile = <font color="#008000">file</font>(r<font color="#483d8b">«C:\binary.dat»</font>, <font color="#483d8b">«w»</font>)<br>
+        <font color="#dc143c;">pickle</font>.dump(mylist, myfile)<br>
+        myfile.close()<br>
+        &nbsp;<br>
+        myfile = <font color="#008000">file</font>(r<font color="#483d8b">«C:\text.txt»</font>, <font color="#483d8b">«w»</font>)<br>
+        myfile.write(<font color="#483d8b">«This is a sample string»</font>)<br>
+        myfile.close()<br>
+        &nbsp;<br>
+        myfile = <font color="#008000">file</font>(r<font color="#483d8b">«C:\text.txt»</font>)<br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> myfile.read()<br>
+        <font color="#483d8b">'This is a sample string'</font><br>
+        myfile.close()<br>
+        &nbsp;<br>
+        <font color="#808080"># Открываем файл для чтения</font><br>
+        myfile = <font color="#008000">file</font>(r<font color="#483d8b">«C:\binary.dat»</font>)<br>
+        loadedlist = <font color="#dc143c;">pickle</font>.load(myfile)<br>
+        myfile.close()<br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> loadedlist<br>
+        [<font color="#483d8b">'This'</font>, <font color="#483d8b">'is'</font>, <font color="#ff4500">4</font>, <font color="#ff4500">13327</font>]</blockquote><br>
+        <h2>Особенности</h2><ul>
+        <li><strong>Условия могут комбинироваться.</strong> 1 &lt; a &lt; 3 выполняется тогда, когда а больше 1, но меньше 3.</li>
+        <li>Используйте операцию «<b>del</b>» чтобы <strong>очищать переменные или элементы массива</strong>.</li>
+        <li>Python предлагает большие возможности для <strong>работы со списками</strong>. Вы можете использовать операторы объявлении структуры списка. Оператор <b>for</b> позволяет задавать элементы списка в определенной последовательности, а <b>if</b> — позволяет выбирать элементы по условию.</li>
+        </ul><br>
+        <blockquote>&gt;&gt;&gt; lst1 = [<font color="#ff4500">1</font>, <font color="#ff4500">2</font>, <font color="#ff4500">3</font>]<br>
+        &gt;&gt;&gt; lst2 = [<font color="#ff4500">3</font>, <font color="#ff4500">4</font>, <font color="#ff4500">5</font>]<br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> [x * y <font color="#ff7700"><b>for</b></font> x <font color="#ff7700">in</font> lst1 <font color="#ff7700"><b>for</b></font> y <font color="#ff7700">in</font> lst2]<br>
+        [<font color="#ff4500">3</font>, <font color="#ff4500">4</font>, <font color="#ff4500">5</font>, <font color="#ff4500">6</font>, <font color="#ff4500">8</font>, <font color="#ff4500">10</font>, <font color="#ff4500">9</font>, <font color="#ff4500">12</font>, <font color="#ff4500">15</font>]<br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> [x <font color="#ff7700"><b>for</b></font> x <font color="#ff7700">in</font> lst1 <font color="#ff7700"><b>if</b></font> <font color="#ff4500">4</font> &gt; x &gt; <font color="#ff4500">1</font>]<br>
+        [<font color="#ff4500">2</font>, <font color="#ff4500">3</font>]<br>
+        <font color="#808080"># Оператор «any» возвращает true, если хотя </font><br>
+        <font color="#808080"># бы одно из условий, входящих в него, выполняется.</font><br>
+        &gt;&gt;&gt; any(i % <font color="#ff4500">3</font> <font color="#ff7700"><b>for</b></font> i <font color="#ff7700">in</font> [<font color="#ff4500">3</font>, <font color="#ff4500">3</font>, <font color="#ff4500">4</font>, <font color="#ff4500">4</font>, <font color="#ff4500">3</font>])<br>
+        <font color="#008000">True</font><br>
+        <font color="#808080"># Следующая процедура подсчитывает количество </font><br>
+        <font color="#808080"># подходящих элементов в списке</font><br>
+        &gt;&gt;&gt; <font color="#008000">sum</font>(<font color="#ff4500">1</font> <font color="#ff7700"><b>for</b></font> i <font color="#ff7700">in</font> [<font color="#ff4500">3</font>, <font color="#ff4500">3</font>, <font color="#ff4500">4</font>, <font color="#ff4500">4</font>, <font color="#ff4500">3</font>] <font color="#ff7700"><b>if</b></font> i == <font color="#ff4500">3</font>)<br>
+        <font color="#ff4500">3</font><br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>del</b></font> lst1[<font color="#ff4500">0</font>]<br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>print</b></font> lst1<br>
+        [<font color="#ff4500">2</font>, <font color="#ff4500">3</font>]<br>
+        &gt;&gt;&gt; <font color="#ff7700"><b>del</b></font> lst1</blockquote><br>
+        <ul>
+        <li><strong>Глобальные переменные </strong>объявляются вне функций и могут быть прочитанны без каких либо объявлений. Но если вам необходимо изменить значение глобальной переменной из функции, то вам необходимо объявить ее в начале функции ключевым словом «<b>global</b>», если вы этого не сделаете, то Python объявит переменную, доступную только для этой функции.</li>
+        </ul><br>
+        <blockquote>number = <font color="#ff4500">5</font><br>
+        &nbsp;<br>
+        <font color="#ff7700"><b>def</b></font> myfunc():<br>
+         <font color="#808080"># Выводит 5</font><br>
+         <font color="#ff7700"><b>print</b></font> number<br>
+        &nbsp;<br>
+        <font color="#ff7700"><b>def</b></font> anotherfunc():<br>
+         <font color="#808080"># Это вызывает исключение, поскольку глобальная апеременная </font><br>
+         <font color="#808080"># не была вызванна из функции. Python в этом случае создает </font><br>
+         <font color="#808080"># одноименную переменную внутри этой функции и доступную</font><br>
+         <font color="#808080"># только для операторов этой функции.</font><br>
+         <font color="#ff7700"><b>print</b></font> number<br>
+         number = <font color="#ff4500">3</font><br>
+        &nbsp;<br>
+        <font color="#ff7700"><b>def</b></font> yetanotherfunc():<br>
+         <font color="#ff7700"><b>global</b></font> number<br>
+         <font color="#808080"># И только из этой функции значение переменной изменяется.</font><br>
+         number = <font color="#ff4500">3</font></blockquote><br>
+        <h2>Эпилог</h2><p>Разумеется в этой статье не описываются все возможности Python. Я надеюсь что эта статья поможет вам, если вы захотите и в дальнейшем изучать этот язык программирования. </p><br>
+        <br>
+        <h2>Преимущества Python</h2><p></p><ul>
+        <li> Скорость выполнения программ написанных на Python очень высока. Это связанно с тем, что основные библиотеки Python <br>
+        написаны на C++ и выполнение задач занимает меньше времени, чем на других языках высокого уровня.</li>
+        <li> В связи с этим вы можете писать свои собственные модули для Python на C или C++ </li>
+        <li> В стандартныx библиотеках Python вы можете найти средства для работы с электронной почтой, протоколами <br>
+        Интернета, FTP, HTTP, базами данных, и пр. </li>
+        <li> Скрипты, написанные при помощи Python выполняются на большинстве современных ОС. Такая переносимость обеспечивает Python применение в самых различных областях.</li>
+        <li> Python подходит для любых решений в области программирования, будь то офисные программы, вэб-приложения, GUI-приложения и т.д.</li>
+        <li> Над разработкой Python трудились тысячи энтузиастов со всего мира. Поддержкой современных технологий в стандартных библиотеках мы можем быть обязаны именно тому, что Python был открыт для всех желающих.</li>
+        </ul><p></p></div>
+  </article>
+</div>
+{% endblock %}
