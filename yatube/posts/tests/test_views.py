@@ -317,3 +317,10 @@ class PostPagesTests(TestCase):
         follow = Follow.objects.filter(user=self.user_1,
                                        author=self.author).count()
         self.assertEqual(follow, 0)
+
+    def test_cant_following_yourself(self):
+        self.authorized_client.force_login(self.author)
+        self.authorized_client.post(PostPagesTests.FOLLOW, follow=True)
+        follow = Follow.objects.filter(user=self.author,
+                                       author=self.author).count()
+        self.assertEqual(follow, 0)
