@@ -6,7 +6,7 @@ admin.site.register(Group)
 
 
 @admin.register(Comment)
-class PostAdmin(admin.ModelAdmin):
+class CommentAdmin(admin.ModelAdmin):
     list_display = ('id', 'text', 'author', 'created', 'post')
     search_fields = ('text',)
     list_filter = ('created',)
@@ -22,5 +22,5 @@ class PostAdmin(admin.ModelAdmin):
 
 
 @admin.register(Follow)
-class PostAdmin(admin.ModelAdmin):
+class FollowAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'author')

@@ -44,17 +44,13 @@ class Post(models.Model):
         on_delete=models.SET_NULL,
         related_name='group_list'
     )
-    # Поле для картинки (необязательное)
     image = models.ImageField(
         'Картинка',
         upload_to='posts/',
         blank=True
     )
-    # Аргумент upload_to указывает директорию,
-    # в которую будут загружаться пользовательские файлы.
 
     def __str__(self):
-        # выводим первые 15 символов текста поста
         return self.text[:15]
 
     class Meta:
@@ -106,3 +102,8 @@ class Follow(models.Model):
     class Meta:
         verbose_name = 'Подписки'
         verbose_name_plural = 'Подписки'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'author'], name="unique_following"
+            )
+        ]
