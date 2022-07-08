@@ -15,11 +15,10 @@ def index(request):
     paginator = Paginator(post_list, settings.PAGE_SIZE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    index = True
     context = {
         'title': title,
         'page_obj': page_obj,
-        'index': index,
+        'index': True,
     }
     return render(request, template, context)
 
@@ -34,11 +33,10 @@ def follow_index(request):
     paginator = Paginator(post_list, settings.PAGE_SIZE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    follow = True
     context = {
         'page_obj': page_obj,
         'title': title,
-        'follow': follow,
+        'follow': True,
     }
     return render(request, template, context)
 

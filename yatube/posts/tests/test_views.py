@@ -67,7 +67,16 @@ class PostPagesTests(TestCase):
         self.authorized_client = Client()
         self.authorized_client.force_login(self.user_1)
 
+    def check_post_in_page(self, url, text, user, group):
+        """Новый пост появляется на странице"""
+        response = self.authorized_client.get(url)
+        post_0 = response.context['page_obj'][0]
+        self.assertEqual(post_0.text, text)
+        self.assertEqual(post_0.author, user)
+        self.assertEqual(post_0.group, group)
+
     def test_follow_new_post_appears_in_index(self):
+        """Новый пост появляется в фиде подписок"""
         self.post_author = Post.objects.create(
             text='Проверка подписок',
             author=self.author
@@ -79,19 +88,13 @@ class PostPagesTests(TestCase):
         self.assertIn('Проверка подписок', follow_index.content.decode())
 
     def test_not_follow_new_post_not_appears_in_index(self):
+        """Новый пост не появляется в фиде подписок, если не подписан"""
         self.post_author = Post.objects.create(
             text='Проверка подписок',
             author=self.author
         )
         follow_index = self.authorized_client.get(FOLLOW_INDEX)
         self.assertNotIn('Проверка подписок', follow_index.content.decode())
-
-    def check_post_in_page(self, url, text, user, group):
-        response = self.authorized_client.get(url)
-        post_0 = response.context['page_obj'][0]
-        self.assertEqual(post_0.text, text)
-        self.assertEqual(post_0.author, user)
-        self.assertEqual(post_0.group, group)
 
     def test_pages_uses_correct_template(self):
         """URL-адрес использует соответствующий шаблон."""
@@ -259,6 +262,7 @@ class PostPagesTests(TestCase):
                 )
 
     def test_cache_index(self):
+        """Проверка работы кэша"""
         post = Post.objects.create(
             text='Тест кэша',
             author=self.author,
@@ -274,20 +278,23 @@ class PostPagesTests(TestCase):
         self.assertNotEqual(response_1.content, response_3.content)
 
     def test_auth_can_comment(self):
+        """Авторизированный может оставлять комменты"""
         self.authorized_client.post(
             PostPagesTests.COMMENT,
-            {'text': 'test_text'}
+            {'text': 'test_text'},
+            follow=True
         )
         post_with_comment = self.authorized_client.get(
             PostPagesTests.POST_PAGE
         )
         self.assertIn('test_text', post_with_comment.content.decode())
         comment_obj = Comment.objects.filter(
-            author=self.user_1, post=self.post.pk
+            author=self.user_1, post=self.post.pk, text='test_text'
         ).count()
         self.assertEqual(comment_obj, 1)
 
     def test_guest_cant_comment(self):
+        """ Не авторизированный не может оставлять комменты"""
         self.guest_client.post(
             PostPagesTests.COMMENT,
             {'text': 'test_text'}
@@ -297,11 +304,12 @@ class PostPagesTests(TestCase):
         )
         self.assertNotIn('test_text', post_with_comment.content.decode())
         comment_obj = Comment.objects.filter(
-            author=self.author, post=self.post.pk
+            author=self.author, post=self.post.pk, text='test_text'
         ).count()
         self.assertEqual(comment_obj, 0)
 
     def test_following(self):
+        """Тест новой подписки"""
         self.authorized_client.post(PostPagesTests.FOLLOW, follow=True)
         follow = Follow.objects.filter(user=self.user_1,
                                        author=self.author).count()
@@ -312,6 +320,7 @@ class PostPagesTests(TestCase):
         self.assertEqual(follow, 0)
 
     def test_cant_following_yourself(self):
+        """Нельзя подписаться на себя"""
         self.authorized_client.force_login(self.author)
         self.authorized_client.post(PostPagesTests.FOLLOW, follow=True)
         follow = Follow.objects.filter(user=self.author,

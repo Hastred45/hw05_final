@@ -6,6 +6,7 @@
 {% block content %}
   <h1>{{ title }}</h1>
   {% include 'includes/switcher.html' %}
+  {% cache 20 follow_page page_obj %}
   {% for post in page_obj %}
     {% include 'includes/post_list.html' %}    
     {% if post.group %}        
@@ -14,6 +15,7 @@
     <br>
     <a href="{% url 'posts:post_detail' post.pk %}">подробнее</a>
     {% if not forloop.last %}<hr>{% endif %}
-  {% endfor %}  
+  {% endfor %}
+  {% endcache %}  
   {% include 'includes/paginator.html' %} 
 {% endblock %}

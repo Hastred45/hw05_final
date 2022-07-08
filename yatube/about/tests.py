@@ -11,8 +11,12 @@ class StaticURLTests(TestCase):
         """Проверка доступности адреса /about/author/."""
         response = self.guest_client.get('/about/author/')
         self.assertEqual(response.status_code, HTTPStatus.OK)
+        response = self.guest_client.get('/about/tech/')
+        self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_about_url_uses_correct_template(self):
         """Проверка шаблона для адреса /about/author/."""
         response = self.guest_client.get('/about/author/')
         self.assertTemplateUsed(response, 'about/author.html')
+        response = self.guest_client.get('/about/tech/')
+        self.assertTemplateUsed(response, 'about/tech.html')
