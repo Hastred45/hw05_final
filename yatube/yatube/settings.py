@@ -14,12 +14,9 @@ SECRET_KEY = 'd7ctg6ml#v6i)i*j-q-a2s^ooe4e!fcnyvzqdo4-(1w70i8f^x'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '158.160.1.7'
     'localhost',
     '127.0.0.1',
-    '[::1]',
-    'testserver',
-    'www.hastred.pythonanywhere.com',
-    'hastred.pythonanywhere.com',
 ]
 
 # Application definition
